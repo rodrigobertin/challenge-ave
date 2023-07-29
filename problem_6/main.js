@@ -3,6 +3,8 @@ const result = document.getElementById('result');
 function searchPokemon(event) {
 	event.preventDefault();
 	const searchValue = document.getElementById('search').value.toLowerCase();
+	result.innerHTML = `<div class="text-center"><h4>Buscando espere...</h4></div>`;
+
 	fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}`)
 		.then(response => response.json())
 		.then(data => {
@@ -28,7 +30,6 @@ function searchPokemon(event) {
 		.catch(err => {
 			console.log(err);
 			result.innerHTML = `<h2 class="text-center">Pokemon not found</h2>`;
-
 		});
 }
 
